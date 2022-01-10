@@ -7,21 +7,25 @@ from src.Supplier import Supplier
 
 
 def initialize(dir):
+    repo.create_tables()
     config = open(dir, "r")
-    instructions = config.readline(0)
-    (numOfHats, numOfSuppliers) = instructions.split(",")
-    for i in range(1, numOfHats):
-        hat = config.readline(i)
+    text = config.readlines()
+    (numOfHats, numOfSuppliers) = text[0].split(",")
+    numOfSuppliers = numOfSuppliers[0: len(numOfSuppliers) - 1]  # stripping the '\n'
+    for i in range(1, int(numOfHats)+1):
+        hat = text[i]
         (id, topping, supplier, quantity) = hat.split(",")
+        quantity = quantity[0: len(quantity) - 1]  # stripping the '\n'
         hatDTO = Hat(id, topping, supplier, quantity)
         repo.hats.insert(hatDTO)
 
-    for j in range(numOfHats + 1, numOfHats + numOfSuppliers):
-        supplier = config.readline(j)
+    for j in range(int(numOfHats) + 1, int(numOfHats) + int(numOfSuppliers)+1):
+        supplier = text[j]
         (id, name) = supplier.split(",")
+        name = name[0: len(name) - 1]
         supplierDTO = Supplier(id, name)
         repo.suppliers.insert(supplierDTO)
 
 
 if __name__ == '__main__':
-    initialize("C:\\Users\\Erez\\PycharmProjects\\Assignment4\\textFiles\\config.txt")
+    initialize("..\\textFiles\\config.txt")

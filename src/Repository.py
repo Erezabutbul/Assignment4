@@ -22,12 +22,12 @@ class Repository:
                                     CREATE TABLE  hats (id INTEGER PRIMARY KEY,
                                                         topping TEXT NOT NULL,
                                                         supplier INTEGER REFERENCES suppliers(id) ,
-                                                        quantity INTEGER NUT NULL;
+                                                        quantity INTEGER NUT NULL);
                                     CREATE TABLE suppliers (id INTEGER PRIMARY KEY, 
-                                                            name TEXT NOT NULL;
+                                                            name TEXT NOT NULL);
                                     CREATE TABLE orders(id INTEGER PRIMARY KEY ,
                                                         location TEXT NOT NULL,
-                                                        hat INTEGER REFERENCES hats(id); """
+                                                        hat INTEGER REFERENCES hats(id)); """
                                 )
 
 
