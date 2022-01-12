@@ -21,6 +21,7 @@ def get_students_ids(file_name):
 #Make sure the IDs outputted (in Students: []) are correct, as they will be used to assign the grade.
 if __name__ == '__main__':
     file_name = sys.argv[1]
+    # file_name = "C:\\Users\\Erez\\PycharmProjects\\Assignment4\\205907660_305194268.zip"
     if not file_name.endswith(".zip"):
         print("File name should end with .zip")
         sys.exit(1)

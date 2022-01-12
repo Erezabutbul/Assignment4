@@ -22,7 +22,7 @@ def initialize(dir):
     for j in range(int(numOfHats) + 1, int(numOfHats) + int(numOfSuppliers) + 1):
         supplier = text[j]
         (id, name) = supplier.split(",")
-        name = name[0: len(name) - 1] if name[len(name) - 1]=='\n' else name
+        name = name[0: len(name) - 1] if name[len(name) - 1] == '\n' else name
         supplierDTO = Supplier(id, name)
         repo.suppliers.insert(supplierDTO)
 
@@ -33,17 +33,10 @@ def executeAllOrders(dir):
         list = order.split(",")
         location = list[0]
         topping = list[1]
-        topping = topping[0: len(topping) - 1] if topping[len(topping) - 1]=='\n' else topping
-        # print(location)
-        # print(topping)
-        repo.executeOrder(location,topping)
+        topping = topping[0: len(topping) - 1] if topping[len(topping) - 1] == '\n' else topping
+        repo.executeOrder(location, topping)
 
 
 if __name__ == '__main__':
-    # if(os.path.isfile("ROCKER.db")):
-    #     os.remove("ROCKER.db")
-    # else:
-    #     print("FUCK YOU")
-
-    initialize("..\\textFiles\\config.txt")
-    executeAllOrders("..\\textFiles\\orders.txt")
+    initialize("config.txt")
+    executeAllOrders("orders.txt")
